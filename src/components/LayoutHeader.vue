@@ -3,7 +3,7 @@
     <img src="../assets/logo.png" alt="logo" class="header-logo">
     <div class="header-nav">
       <ul>
-        <li v-for="menu in menus" :key="menu.id">{{ menu.title }}</li>
+        <li v-for="menu in menus" :key="menu.id"><router-link to="/">{{ menu.title }}</router-link></li>
       </ul>
     </div>
   </div>
@@ -15,9 +15,11 @@ export default {
   data() {
     return {
       menus: [
-        {id: 1, title: 'Menu 1'},
-        {id: 2, title: 'Menu 2'},
-        {id: 3, title: 'Menu 3'}
+        {id: 1, title: 'Utilisateurs'},
+        {id: 2, title: 'Posts'},
+        {id: 3, title: 'Photos'},
+        {id: 4, title: 'Stepper'},
+        {id: 5, title: 'Administration'}
       ],
     }
   },
