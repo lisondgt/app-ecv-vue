@@ -1,9 +1,9 @@
 <template>
   <div class="header">
-    <img src="../assets/logo.png" alt="logo" class="header-logo">
+    <router-link to="/"><img src="../assets/logo.png" alt="logo" class="header-logo"></router-link>
     <div class="header-nav">
       <ul>
-        <li v-for="menu in menus" :key="menu.id"><router-link to="/">{{ menu.title }}</router-link></li>
+        <li v-for="menu in menus" :key="menu.id"><router-link :to=menu.url>{{ menu.title }}</router-link></li>
       </ul>
     </div>
   </div>
@@ -15,11 +15,11 @@ export default {
   data() {
     return {
       menus: [
-        {id: 1, title: 'Utilisateurs'},
-        {id: 2, title: 'Posts'},
-        {id: 3, title: 'Photos'},
-        {id: 4, title: 'Stepper'},
-        {id: 5, title: 'Administration'}
+        {id: 1, title: 'Utilisateurs', url:"/utilisateurs"},
+        {id: 2, title: 'Posts', url:"/posts"},
+        {id: 3, title: 'Photos', url:"/photos"},
+        {id: 4, title: 'Stepper', url:"/stepper"},
+        {id: 5, title: 'Administration', url:"/administration"}
       ],
     }
   },
