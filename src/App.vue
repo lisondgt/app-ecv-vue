@@ -1,9 +1,10 @@
 <template>
   <div id="app">
-
-    <layout-header></layout-header>
-    <layout-content></layout-content>
-    <layout-footer></layout-footer>
+    <v-app>
+      <layout-header></layout-header>
+      <layout-content></layout-content>
+      <layout-footer></layout-footer>
+    </v-app>
 
   </div>
 </template>
