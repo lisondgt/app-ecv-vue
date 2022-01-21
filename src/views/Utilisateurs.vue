@@ -6,7 +6,7 @@
         <v-data-table
             :headers="headers"
             :items="users"
-            sort-by="lastname"
+            sort-by="name"
             class="elevation-1"
         >
           <template v-slot:top>
@@ -43,7 +43,7 @@
                             md="4"
                         >
                           <v-text-field
-                              v-model="editedItem.lastname"
+                              v-model="editedItem.name"
                               label="Nom"
                           ></v-text-field>
                         </v-col>
@@ -53,7 +53,7 @@
                             md="4"
                         >
                           <v-text-field
-                              v-model="editedItem.firstname"
+                              v-model="editedItem.username"
                               label="Prénom"
                           ></v-text-field>
                         </v-col>
@@ -73,8 +73,8 @@
                             md="4"
                         >
                           <v-text-field
-                              v-model="editedItem.address"
-                              label="Adresse postale"
+                              v-model="editedItem.phone"
+                              label="Numéro de téléphone"
                           ></v-text-field>
                         </v-col>
                       </v-row>
@@ -152,26 +152,26 @@ export default {
         text: 'Nom',
         align: 'start',
         sortable: true,
-        value: 'lastname',
+        value: 'name',
       },
-      { text: 'Prénom', value: 'firstname' },
+      { text: 'Pseudo', value: 'username' },
       { text: 'Email', value: 'email' },
-      { text: 'Adresse', value: 'address' },
+      { text: 'Téléphone', value: 'phone' },
       { text: 'Actions', value: 'actions', sortable: false },
     ],
     users: [],
     editedIndex: -1,
     editedItem: {
-      lastname: '',
-      firstname: '',
+      name: '',
+      username: '',
       email: '',
-      address: '',
+      phone: '',
     },
     defaultItem: {
-      lastname: '',
-      firstname: '',
+      name: '',
+      username: '',
       email: '',
-      address: '',
+      phone: '',
     },
   }),
 
@@ -195,69 +195,16 @@ export default {
   },
 
   methods: {
-    initialize () {
-      this.users = [
-        {
-          lastname: 'Doe',
-          firstname: 'John',
-          email: 'john.doe@email.com',
-          address: '65 Rue du vieux moulin, 59000 Lille',
-        },
-        {
-          lastname: 'Doe',
-          firstname: 'John',
-          email: 'john.doe@email.com',
-          address: '65 Rue du vieux moulin, 59000 Lille',
-        },
-        {
-          lastname: 'Doe',
-          firstname: 'John',
-          email: 'john.doe@email.com',
-          address: '65 Rue du vieux moulin, 59000 Lille',
-        },
-        {
-          lastname: 'Doe',
-          firstname: 'John',
-          email: 'john.doe@email.com',
-          address: '65 Rue du vieux moulin, 59000 Lille',
-        },
-        {
-          lastname: 'Doe',
-          firstname: 'John',
-          email: 'john.doe@email.com',
-          address: '65 Rue du vieux moulin, 59000 Lille',
-        },
-        {
-          lastname: 'Doe',
-          firstname: 'John',
-          email: 'john.doe@email.com',
-          address: '65 Rue du vieux moulin, 59000 Lille',
-        },
-        {
-          lastname: 'Doe',
-          firstname: 'John',
-          email: 'john.doe@email.com',
-          address: '65 Rue du vieux moulin, 59000 Lille',
-        },
-        {
-          lastname: 'Doe',
-          firstname: 'John',
-          email: 'john.doe@email.com',
-          address: '65 Rue du vieux moulin, 59000 Lille',
-        },
-        {
-          lastname: 'Doe',
-          firstname: 'John',
-          email: 'john.doe@email.com',
-          address: '65 Rue du vieux moulin, 59000 Lille',
-        },
-        {
-          lastname: 'Doe',
-          firstname: 'John',
-          email: 'john.doe@email.com',
-          address: '65 Rue du vieux moulin, 59000 Lille',
-        },
-      ]
+    async initialize () {
+      try {
+        const response = await this.$http.get(
+            "http://jsonplaceholder.typicode.com/users"
+        );
+        // JSON responses are automatically parsed.
+        this.users = response.data;
+      } catch (error) {
+        console.log(error);
+      }
     },
 
     editItem (item) {
