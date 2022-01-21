@@ -5,7 +5,7 @@ import Utilisateurs from '../views/Utilisateurs.vue'
 import Posts from '../views/Posts.vue'
 import Photos from '../views/Photos.vue'
 import Stepper from '../views/Stepper.vue'
-import Administration from '../views/Utilisateurs.vue'
+import Administration from '../views/Administration.vue'
 
 Vue.use(VueRouter)
 

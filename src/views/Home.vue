@@ -1,5 +1,9 @@
 <template>
-  <layout-content></layout-content>
+  <div class="content-page">
+    <v-container>
+      <layout-content></layout-content>
+    </v-container>
+  </div>
 </template>
 
 <script>

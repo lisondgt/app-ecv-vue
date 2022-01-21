@@ -21,8 +21,15 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scope lang="scss">
 body {
   margin: 0;
+}
+.content-page {
+  min-height: calc(100vh - 161px);
+  padding: 2rem 0;
+}
+h1 {
+  margin-bottom: 20px;
 }
 </style>
